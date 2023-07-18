@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {%include 'cdnlines.html'%}
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="text-center">NTH-Employee data</h4>
+          <div class="text-right">
+            <a href="{% url 'add'%}" class="btn btn-success">Add Employee</a>
+          </div>
+          {% if emp %}
+          <h1 class="text-center font-weight-bold display-4"></h1>
+          <table class="table table-bordered text-center">
+            <thead class="bg-success text-white" >
+              <tr>
+                <th>first name</th>
+                <th>last name</th>
+                <th>cname</th>
+                <th>email</th>
+                <th>mobile</th>
+                <th>htown</th>
+                <th>qualification</th>
+                <th>percentage</th>
+                <th>passoutyear</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in emp %}
+              <tr>
+                <td>{{i.first_name}}</td>
+                <td>{{i.last_name}}</td>
+                <td>{{i.cname}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.qualification}}</td>
+                <td>{{i.percentage}}</td>
+                <td>{{i.passoutyear}}</td>
+                <td>
+                  <a href="{% url 'updata' i.id %}" class="btn bth_danger btn-success">update</a>
+                  <a href="{%  url 'delete' i.id %}" class="btn bth_danger btn-danger">delete</a>
+
+                </td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <h1 class="text-center"></h1>
+          {% endif %}
+          </div>
+
+        </div>
+
+      </div>
+  </body>
+</html>
